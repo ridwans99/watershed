@@ -1,0 +1,26 @@
+import cv2
+import numpy
+ 
+img = cv2.imread("/path/to/image.png")
+print (img)
+
+img = cv2.imread("/path/to/image.png")
+r = 0.299
+g = 0.587
+b = 0.114
+img[j,i] =  0.21*r[j,i] + 0.72*g[j,i] + 0.07*b[j,i]
+                 
+srcurl = "img/image-resize.jpg"
+src = cv2.imread(srcurl)
+x, y = src.shape[1],src.shape[0] # take the resolution (row, column)
+b, g, r = cv2.split(src) #  split image to variable b, g and r
+src3 = b
+i = 0
+j = 0
+while i != x : # if the resolution in x not complete
+    while j != y :  # if the resolution in y not complete
+        src3[j,i] =  0.21*r[j,i] + 0.72*g[j,i] + 0.07*b[j,i]
+        j += 1
+    i += 1
+    j = 0
+print (src3)
